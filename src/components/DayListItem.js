@@ -18,8 +18,8 @@ export default function DayListItem(props) {
   const availability = formatSpots(props.spots);
 
   const dayClass = classNames("day-list__item", {
-    "--selected": props.selected,
-    "--full": props.spots === 0
+    "day-list__item--selected": props.selected,
+    "day-list__item--full": props.spots === 0
   });
 
   return (
