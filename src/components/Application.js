@@ -64,8 +64,12 @@ const appointments = {
 
 export default function Application(props) {
   const [day, setDay] = useState("Monday");
-  const appointmentsArr = Object.values(appointments).map((appointment) => {
-   <Appointment key={appointment.id} {...appointment} />});
+
+  const schedule = Object.values(appointments).map((appt) => {
+    return (
+        <Appointment key={appt.id} id={appt.id} time={appt.time} interview={appt.interview} />
+      )
+  });
 
   return (
     <main className="layout">
@@ -89,7 +93,7 @@ export default function Application(props) {
         />
       </section>
       <section className="schedule">
-        {appointmentsArr}
+        {schedule}
       </section> 
     </main>
   );
