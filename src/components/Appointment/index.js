@@ -33,6 +33,11 @@ export default function Appointment(props) {
     .then(() => transition(SHOW))
   }
 
+  function remove() {
+    props.cancelInterview(props.id);
+    transition(EMPTY);
+  }
+
   return (
     <article className="appointment">
       <Header time={props.time} />
@@ -41,6 +46,7 @@ export default function Appointment(props) {
       {mode === SHOW && ( <Show
           student={props.interview.student}
           interviewer={props.interview.interviewer}
+          onDelete={remove}
         />)}
       {mode === CREATE && ( <Form 
           interviewers={props.interviewers}
