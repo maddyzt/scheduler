@@ -32,6 +32,25 @@ export default function Application(props) {
     });
   }, []);
 
+  function bookInterview(id, interview) {
+    console.log(id, interview);
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: { ...interview }
+    };
+
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    setState({
+      ...state,
+      appointments
+    });
+  }
+
   const dailyInterviewers = getInterviewersForDay(state, state.day);
   const dailyAppointments = getAppointmentsForDay(state, state.day);
 
@@ -49,12 +68,6 @@ export default function Application(props) {
       )
   });
 
-
-  function bookInterview(id, interview) {
-    console.log(id, interview);
-  }
-
-
   return (
     <main className="layout">
       <section className="sidebar">
@@ -68,7 +81,9 @@ export default function Application(props) {
         <DayList 
           days={state.days} 
           value={state.day} 
-          onChange={setDay} />
+          onChange={setDay}
+          // bookInterview={bookInterview} 
+        />
         </nav>
         <img
           className="sidebar__lhl sidebar--centered"
