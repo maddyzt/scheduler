@@ -1,7 +1,7 @@
 import React from 'react';
 
+// component to show an existing appointment (booked)
 export default function Show(props) {
-
   const { student, interviewer, onEdit, onDelete} = props;
 
   return (

@@ -1,9 +1,6 @@
-// When transition is called, we need to add the new mode to our history.
-// When back is called, we should set the mode to the previous item in our history array.
+import { useState } from 'react';
 
-
-import React, { useState } from 'react';
-
+// exports mode, transition and back functions for transitioning between modes
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);

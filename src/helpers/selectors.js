@@ -1,24 +1,23 @@
+// helper function to match appointment ids
 export function matchId(appointments, ids) {
   const matched = ids.map(id => appointments[id]);
   return matched;
 }
 
+// returns an array of appointments for that day
 export function getAppointmentsForDay(state, day) {
-  //... returns an array of appointments for that day
   let appointmentArr = [];
 
   state.days.map(dayObj => {
     if (dayObj.name === day) {
       dayObj.appointments.forEach((appt) => appointmentArr.push(appt));
     }
-
   })
     return matchId(state.appointments, appointmentArr);
 }
 
-
+// returns an object of interview information
 export function getInterview(state, interview) {
-
   if (!interview) {
     return null;
   }
@@ -33,7 +32,7 @@ export function getInterview(state, interview) {
   return result;
 }
 
-
+// returns an array of available interviewers for the day
 export function getInterviewersForDay(state, name) {
   let interviewersArr = [];
   const filterDays = state.days.filter(day => day.name === name);

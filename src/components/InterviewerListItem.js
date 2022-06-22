@@ -2,22 +2,23 @@ import React from 'react';
 import "components/InterviewerListItem.scss";
 import classNames from "classnames";
 
-
+// interviewer list item formats each individual interviewer
 export default function InterviewerListItem(props) {
+  const { setInterviewer, avatar, name, selected } = props;
 
   const interviewersClass = classNames(
     "interviewers__item", 
-    {"interviewers__item--selected": props.selected}
+    {"interviewers__item--selected": selected}
     );
 
   return (
-  <li onClick={props.setInterviewer} className={interviewersClass}>
+  <li onClick={setInterviewer} className={interviewersClass}>
   <img
     className="interviewers__item-image"
-    src={props.avatar}
-    alt={props.name}
+    src={avatar}
+    alt={name}
   />
-  {props.selected && props.name}
+  {selected && name}
 </li>
 );
 }

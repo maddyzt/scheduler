@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+// sets state, gets data from API, books interview/cancels interview and updates spots accordingly
 export default function useApplicationData(props) {
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -12,6 +12,7 @@ export default function useApplicationData(props) {
   
   const setDay = day => setState({...state, day});
   
+  // get data from API
   useEffect(() => {
     let days = axios.get("/api/days");
     let appointments = axios.get("/api/appointments");
@@ -26,6 +27,7 @@ export default function useApplicationData(props) {
     });
   }, []);
 
+  // counts null appointments to update spots field in state object
   function updateSpots(state) {
     const dayToChange = state.days.find(day => day.name === state.day);
     const newDay = {...dayToChange};
@@ -46,6 +48,7 @@ export default function useApplicationData(props) {
 
   }
   
+  // updates state with booked interview
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -69,6 +72,7 @@ export default function useApplicationData(props) {
     })
   }
   
+  // updates state with canceled interview
   function cancelInterview(id) {
     const appointment = {
       ...state.appointments[id],

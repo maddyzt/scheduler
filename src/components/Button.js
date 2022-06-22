@@ -2,24 +2,22 @@ import React from "react";
 import classNames from "classnames";
 import "components/Button.scss";
 
-
+// button component which includes multiple styles
 export default function Button(props) {
+  const { confirm, danger, onClick, disabled, children } = props;
+
    const buttonClass = classNames("button", {
-      "button--confirm": props.confirm,
-      "button--danger": props.danger
+      "button--confirm": confirm,
+      "button--danger": danger
     });
  
    return (
    <button 
-   onClick={props.onClick} 
-   disabled={props.disabled} 
+   onClick={onClick} 
+   disabled={disabled} 
    className={buttonClass}
    >
-   {props.children}
+   {children}
    </button>
    );
  }
-
-
-// classNames('foo', { bar: true }); // => 'foo bar'
-// classNames('foo', { bar: false }); // => 'foo'
