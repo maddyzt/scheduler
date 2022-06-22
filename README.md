@@ -1,5 +1,13 @@
 # Interview Scheduler
 
+## About
+Scheduler is a single page React-based app that allows students to schedule an appointment with a selected interviewer. Users can view the schedule for each day, and add or delete appointments as needed.
+
+## Screenshots
+!["Screenshot of schedule"]()
+!["Screenshot of adding an appointment"]()
+!["Screenshot of confirmation to delete an appointment"]()
+
 ## Setup
 
 Install dependencies with `npm install`.
